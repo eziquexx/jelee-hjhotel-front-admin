@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // 24.12.06 지은 : pagination fetch문 분리 작업 fin.
 export default function usePaginationFetch(urlTest) {
-
+  const env_API_BASE_URL = process.env.REACT_APP_API_URL;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ export default function usePaginationFetch(urlTest) {
   const [totalElements, setTotalElements] = useState(0); // 총 페이지 개수
   const [page, setPage] = useState(1); // 현재 페이지
   const size = 10; // 한 페이지에 표시할 항목 개수
-  const fetchUrl = `http://localhost:8080/api/admin/${urlTest}?page=${page}&size=${size}`;
+  const fetchUrl = `${env_API_BASE_URL}/api/admin/${urlTest}?page=${page}&size=${size}`;
   
 
   useEffect(() => {

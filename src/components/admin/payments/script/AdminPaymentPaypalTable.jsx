@@ -3,7 +3,8 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
 // 24.12.06 지은 : PayPal 주문내역 테이블 fin. 상세내역 모달창 작업 fin.
-export default function AdminPaymentPaypalTable({ data, loading }) {  
+export default function AdminPaymentPaypalTable({ data, loading }) {
+  const env_API_BASE_URL = process.env.REACT_APP_API_URL;
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loadingDetails, setLoadingDetails] = useState(false);
@@ -34,7 +35,7 @@ export default function AdminPaymentPaypalTable({ data, loading }) {
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/admin/payments/paypalOrders/${itemId}/details`, {
+      const response = await fetch(`${env_API_BASE_URL}/api/admin/payments/paypalOrders/${itemId}/details`, {
         method: 'GET', // GET 요청
         credentials: 'include', // 쿠키를 함께 전송
       });

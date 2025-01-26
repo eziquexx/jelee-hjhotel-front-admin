@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 function useFetchData(url){
-    
-    const serverUrl = `http://localhost:8080/api/admin/${url}`;
+    const env_API_BASE_URL = process.env.REACT_APP_API_URL;
+    const serverUrl = `${env_API_BASE_URL}/api/admin/${url}`;
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);

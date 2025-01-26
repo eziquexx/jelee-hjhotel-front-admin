@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 // import useAuthStore from 'src/state/authStore';
 
 const LoginPage = () => {
+    const env_API_BASE_URL = process.env.REACT_APP_API_URL;
     const [formData, setFormData] = useState({ userId: '', password: '' });
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const LoginPage = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/users/login', {
+            const response = await fetch(`${env_API_BASE_URL}/api/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

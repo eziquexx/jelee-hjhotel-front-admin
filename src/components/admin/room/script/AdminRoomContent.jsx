@@ -5,6 +5,7 @@ import RoomTable from "./comn/RoomTable";
 
 
 export default function AdminRoomContent() {
+    const env_API_BASE_URL = process.env.REACT_APP_API_URL;
     const [rooms, setRooms] = useState([]);
     const [date, setDate] = useState(""); // 날짜
     const [resStatus, setStatus] = useState(""); // 객실 상태
@@ -38,7 +39,7 @@ export default function AdminRoomContent() {
                 apiUrl = `/roomdetails?${queryParams}`;
             }
 
-            const response = await fetch(`http://localhost:8080/api/admin/rooms${apiUrl}`,{
+            const response = await fetch(`${env_API_BASE_URL}/api/admin/rooms${apiUrl}`,{
                 method: 'GET', // GET 요청
                 credentials: 'include', // 쿠키를 함께 전송
               });
@@ -58,7 +59,7 @@ export default function AdminRoomContent() {
         const newStatus = newState ? "AVAILABLE" : "OCCUPIED"; // 토글 상태 변경
         try {
             const response = await fetch(
-                `http://localhost:8080/api/admin/rooms/details/${roomNumber}/${newStatus}`,
+                `${env_API_BASE_URL}/api/admin/rooms/details/${roomNumber}/${newStatus}`,
                 {
                     method: "PUT",
                     credentials: 'include', // 쿠키를 함께 전송

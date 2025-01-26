@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useUserInfo = (isLoggedIn) => {
+    const env_API_BASE_URL = process.env.REACT_APP_API_URL;
     const [userInfo, setUserInfo] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -14,7 +15,7 @@ const useUserInfo = (isLoggedIn) => {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch('http://localhost:8080/api/admin/admininfo', {
+                const response = await fetch(`${env_API_BASE_URL}/api/admin/admininfo`, {
                     method: 'GET',
                     credentials: 'include',
                 });

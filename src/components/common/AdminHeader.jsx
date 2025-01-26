@@ -9,11 +9,12 @@ import "./css/AdminHeader.css";
 
 //24.11.25 지은 [완료] : AdminHeader 링크 테스트
 export default function AdminHeader() {
+  const env_API_BASE_URL = process.env.REACT_APP_API_URL;
   const [staffUserId, setStaffUserId] = useState(""); // 관리자 아이디 상태
 
   const handleLogout = async () => {
     try {
-      await fetch("http://localhost:8080/api/admin/logout", {
+      await fetch(`${env_API_BASE_URL}/api/admin/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -27,7 +28,7 @@ export default function AdminHeader() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/admin/protected", {
+        const response = await fetch(`${env_API_BASE_URL}/api/admin/protected`, {
           credentials: "include", // 세션 정보를 포함
         });
         if (response.ok) {

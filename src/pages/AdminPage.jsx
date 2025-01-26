@@ -4,6 +4,7 @@ import AdminHeader from "../components/common/AdminHeader";
 import AdminContents from "../components/common/AdminContents";
 
 const AdminPage = () => {
+    const env_API_BASE_URL = process.env.REACT_APP_API_URL;
     const [authorized, setAuthorized] = useState(false);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AdminPage = () => {
 
     const handleLogout = async () => {
         try {
-            await fetch("http://localhost:8080/api/admin/logout", {
+            await fetch(`${env_API_BASE_URL}/api/admin/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -33,7 +34,7 @@ const AdminPage = () => {
     useEffect(() => {
         const checkAccess = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/admin/protected", {
+                const response = await fetch(`${env_API_BASE_URL}/api/admin/protected`, {
                     method: "GET",
                     credentials: "include", // JWT 쿠키 자동 포함
                 });
