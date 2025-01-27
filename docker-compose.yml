@@ -1,0 +1,8 @@
+version: '3'
+services:
+  react-app:
+    build: .
+    ports:
+      - "85:80" # Nginx 포트 매핑
+    env_file:
+      - .env.production # 환경 변수 파일을 로드하여 설정
