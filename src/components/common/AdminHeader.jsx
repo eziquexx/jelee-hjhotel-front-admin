@@ -10,6 +10,7 @@ import "./css/AdminHeader.css";
 //24.11.25 지은 [완료] : AdminHeader 링크 테스트
 export default function AdminHeader() {
   const env_API_BASE_URL = process.env.REACT_APP_API_URL;
+  const env_SERVER_USER_URL = process.env.REACT_APP_SERVER_USER_URL;
   const [staffUserId, setStaffUserId] = useState(""); // 관리자 아이디 상태
 
   const handleLogout = async () => {
@@ -59,7 +60,7 @@ export default function AdminHeader() {
             </ButtonEx>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/admin">
+            <Link to={env_SERVER_USER_URL}>
               <span className="material-symbols-outlined">home</span>
             </Link>
           </Nav>
