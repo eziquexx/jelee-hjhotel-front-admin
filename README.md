@@ -38,7 +38,7 @@
 <br/>
 
 ## :star: 팀원 (Programmers)
-- **JELEE** (팀장)
+- **JELEE** (팀장/본인)
 - Kim YH
 - Lim SY
 - Ahn SJ
